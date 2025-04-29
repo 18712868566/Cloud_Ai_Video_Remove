@@ -1,13 +1,63 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/home/home",
+    "pages/tasks/tasks",
+    "pages/more_apps/more_apps",
+    "pages/profile/profile",
+    "pages/login/login",
+    "pages/feedback/feedback",
+    "pages/history/history",
+    "pages/membership/membership",
+    "pages/settings/settings",
+    "pages/tutorial/tutorial",
+    "pages/process/process"
   ],
   "window": {
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarBackgroundColor": "#ffffff"
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "AI短视频免费去水印",
+    "navigationBarTextStyle": "black"
   },
-  "componentFramework": "glass-easel",
-  "lazyCodeLoading": "requiredComponents"
+  "tabBar": {
+    "custom": false,
+    "color": "#666666",
+    "selectedColor": "#0052d9",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "assets/icons/home.png",
+        "selectedIconPath": "assets/icons/home_selected.png"
+      },
+      {
+        "pagePath": "pages/more_apps/more_apps",
+        "text": "更多应用",
+        "iconPath": "assets/icons/apps.png",
+        "selectedIconPath": "assets/icons/apps_selected.png"
+      },
+      {
+        "pagePath": "pages/tasks/tasks",
+        "text": "每日任务",
+        "iconPath": "assets/icons/tasks.png",
+        "selectedIconPath": "assets/icons/tasks_selected.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "assets/icons/profile.png",
+        "selectedIconPath": "assets/icons/profile_selected.png"
+      }
+    ]
+  },
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-message": "tdesign-miniprogram/message/message",
+    "t-progress": "tdesign-miniprogram/progress/progress"
+  }
 }

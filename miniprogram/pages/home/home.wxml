@@ -1,0 +1,43 @@
+<view class="container">
+    <view class="announcement">
+        <view class="announcement-icon">
+            <t-icon name="sound" size="40rpx" color="#0052d9" />
+        </view>
+        <view class="announcement-container">
+            <!-- 修改公告文本部分 -->
+            <view class="announcement-text">{{announcement}}</view>
+            <view class="announcement-text">{{announcement}}</view>
+            <view class="announcement-text announcement-text-duplicate">{{announcement}}</view>
+        </view>
+    </view>
+    <view class="input-area">
+        <text class="video-tit">视频链接:</text>
+        <t-input class="custom-class" prefixIcon="link" placeholder="请粘贴视频分享链接..." autosize value="{{videoUrl}}" bind:change="onInputChange" />
+        <view class="button-group">
+            <t-button theme="light" block bindtap="handlePaste" icon="paste">粘贴</t-button>
+            <t-button theme="light" block bindtap="handleClear" icon="close">清空</t-button>
+        </view>
+        <t-button theme="primary" block bindtap="handleParse">开始解析</t-button>
+    </view>
+    <view class="features">
+        <view class="feature-item" bindtap="navigateToTutorial">
+            <t-icon name="help-circle" size="48rpx" />
+            <text>使用教程</text>
+        </view>
+        <view class="feature-item" bindtap="navigateToHistory">
+            <t-icon name="time" size="48rpx" />
+            <text>解析记录</text>
+        </view>
+        <!-- 修改这里，使用button组件替换view组件 -->
+        <button class="feature-item share-btn" open-type="share" style="background-color: #e8fff0;">
+            <t-icon name="logo-wechat-stroke" size="48rpx" color="#00a870" />
+            <text>分享给好友</text>
+        </button>
+        <view class="feature-item"  style="background-color:rgb(255, 221, 216);">
+            <t-icon name="heart" size="48rpx" color="#ff0000" />
+            <text>赞助作者</text>
+        </view>
+    </view>
+    <t-toast id="t-toast" />
+    <t-message id="t-message" />
+</view>

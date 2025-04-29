@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="settings-container">
+    <view class="settings-group">
+      <t-cell title="清理缓存" leftIcon="delete" hover note="{{cacheSize}}" arrow bindtap="clearCache" />
+      <t-cell title="权限管理" leftIcon="lock" hover arrow bindtap="managePermissions" />
+      <t-cell title="消息通知" leftIcon="notification">
+        <t-switch slot="note" value="{{notificationEnabled}}" bind:change="toggleNotification" />
+      </t-cell>
+      <t-cell title="帮助中心" leftIcon="help-circle" hover arrow bindtap="navigateToHelp" />
+      <t-cell title="关于我们" leftIcon="info-circle" hover arrow bindtap="navigateToAbout" />
+    </view>
+    
+    <t-button theme="danger" block class="logout-button" bindtap="handleLogout">退出登录</t-button>
+    
+    <view class="version-info">
+      当前版本：v1.0.0
+    </view>
+  </view>
+  
+  <t-toast id="t-toast" />
+  <t-dialog id="t-dialog" />
+</view>

@@ -1,0 +1,97 @@
+.container {
+    padding-bottom: 40rpx;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20rpx 0;
+    background-color: #fff;
+  }
+  
+  .title {
+    font-size: 36rpx;
+    font-weight: bold;
+  }
+  
+  .back-icon {
+    position: absolute;
+    left: 20rpx;
+  }
+  
+  .history-list {
+    padding: 20rpx;
+  }
+  
+  .date-group {
+    margin-bottom: 30rpx;
+  }
+  
+  .date-header {
+    font-size: 28rpx;
+    color: #999;
+    padding: 10rpx 0;
+    margin-bottom: 10rpx;
+  }
+  
+  .video-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 20rpx;
+    border-radius: 12rpx;
+    margin-bottom: 20rpx;
+    box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  }
+  
+  .video-info {
+    flex: 1;
+    margin-right: 20rpx;
+  }
+  
+  .video-title {
+    font-size: 28rpx;
+    margin-bottom: 10rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  
+  .video-meta {
+    display: flex;
+    font-size: 24rpx;
+    color: #999;
+  }
+  
+  .video-platform {
+    margin-right: 20rpx;
+  }
+  
+  .video-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10rpx;
+  }
+  
+  .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 100rpx 0;
+  }
+  
+  .empty-text {
+    color: #999;
+    margin: 30rpx 0;
+  }
+  
+  .load-more {
+    text-align: center;
+    padding: 20rpx 0;
+  }

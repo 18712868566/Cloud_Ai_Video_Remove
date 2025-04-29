@@ -1,0 +1,26 @@
+<view class="container">
+  <view class="feedback-container">
+    <view class="feedback-card">
+      <view class="feedback-title">反馈类型</view>
+      <view class="feedback-type">
+        <t-tag class="type-option {{activeType === 0 ? 'active' : ''}}" data-index="0" bindtap="selectType" size="large" variant="{{activeType === 0 ? 'light' : 'outline'}}">功能建议</t-tag>
+        <t-tag class="type-option {{activeType === 1 ? 'active' : ''}}" data-index="1" bindtap="selectType" size="large" variant="{{activeType === 1 ? 'light' : 'outline'}}">使用问题</t-tag>
+        <t-tag class="type-option {{activeType === 2 ? 'active' : ''}}" data-index="2" bindtap="selectType" size="large" variant="{{activeType === 2 ? 'light' : 'outline'}}">体验问题</t-tag>
+        <t-tag class="type-option {{activeType === 3 ? 'active' : ''}}" data-index="3" bindtap="selectType" size="large" variant="{{activeType === 3 ? 'light' : 'outline'}}">其他问题</t-tag>
+      </view>
+      
+      <view class="feedback-title">问题描述</view>
+      <t-textarea class="feedback-textarea" placeholder="请详细描述您遇到的问题或建议，以便我们更好地为您解决..." maxlength="{{500}}" autosize value="{{feedbackContent}}" bind:change="onContentChange" />
+      <view class="char-count">{{contentLength}}/500</view>
+      
+      <t-button theme="primary" block disabled="{{!feedbackContent}}" bindtap="submitFeedback">提交反馈</t-button>
+      
+      <view class="feedback-tip">
+        感谢您的反馈，我们会认真处理每一条意见
+      </view>
+    </view>
+  </view>
+  
+  <t-toast id="t-toast" />
+  <t-message id="t-message" />
+</view>

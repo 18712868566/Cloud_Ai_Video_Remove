@@ -1,0 +1,97 @@
+<view class="container">
+  <view class="header">
+    <text class="title">个人中心</text>
+    <view class="header-icons">
+      <!-- <t-icon name="service" size="48rpx" color="#666" bindtap="contactService" class="header-icon" /> -->
+      <button open-type="contact" class="contact-btn">
+        <t-icon name="service" size="48rpx" color="#666" class="header-icon" />
+      </button>
+      <t-icon name="setting" size="48rpx" color="#666" bindtap="navigateToSettings" class="header-icon" />
+    </view>
+  </view>
+  <!-- 用户信息卡片 -->
+  <view class="user-card">
+    <view class="user-info">
+      <view class="avatar">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class="user-details">
+        <view class="user-name-container">
+          <open-data type="userNickName" class="user-name"></open-data>
+          <view class="vip-badge" wx:if="{{isVip}}">VIP会员</view>
+        </view>
+        <view class="user-id">ID: {{userId || '12345678'}}</view>
+        <t-button theme="light" size="small" bindtap="editProfile" class="edit-btn">编辑资料</t-button>
+        <!-- <button bindtap="editProfile" class="edit-btn">编辑资料</button> -->
+      </view>
+    </view>
+  </view>
+  <!-- 会员信息 -->
+  <view class="card">
+    <view class="card-header">
+      <text class="card-title">我的会员</text>
+      <text class="card-action" bindtap="navigateToMembership">查看详情</text>
+    </view>
+    <view class="vip-info">
+      <view class="vip-status">
+        <t-icon name="discount" size="40rpx" color="#FFD700" />
+        <text class="vip-level">高级会员</text>
+      </view>
+      <view class="vip-expire">有效期至 2023-12-31</view>
+      <t-button theme="primary" size="small" bindtap="renewVip">立即续费</t-button>
+    </view>
+  </view>
+  <!-- 推荐功能 -->
+  <view class="card">
+    <view class="feature-grid">
+      <button class="feature-item" open-type="share" style="padding-top:30rpx">
+          <view class="feature-icon" style="background-color: #e8f4ff;">
+            <t-icon name="share" size="48rpx" color="#0052d9" />
+          </view>
+          <text class="feature-name">分享应用</text>
+        </button>
+      <view class="feature-item" bindtap="inviteFriends">
+        <view class="feature-icon" style="background-color: #e8fff0;">
+          <t-icon name="gift" size="48rpx" color="#00a870" />
+        </view>
+        <text class="feature-name">邀请有礼</text>
+      </view>
+      <view class="feature-item" bindtap="navigateToTutorial">
+        <view class="feature-icon" style="background-color: #f0e8ff;">
+          <t-icon name="help-circle" size="48rpx" color="#6a11cb" />
+        </view>
+        <text class="feature-name">常见问题</text>
+      </view>
+      <button class="feature-item" open-type="contact" style="padding-top:30rpx">
+        <view class="feature-icon" style="background-color: #fff0e8;">
+          <t-icon name="service" size="48rpx" color="#ff7700" />
+        </view>
+        <text class="feature-name">联系客服</text>
+      </button>
+    </view>
+  </view>
+  <!-- 功能菜单 -->
+  <view class="card menu-card">
+    <view class="menu-item" bindtap="navigateToHistory">
+      <view class="menu-item-left">
+        <t-icon name="download" size="44rpx" color="#0052d9" />
+        <text class="menu-text">解析记录</text>
+      </view>
+      <t-icon name="chevron-right" size="40rpx" color="#bbb" />
+    </view>
+    <view class="menu-item" bindtap="navigateToFeedback">
+      <view class="menu-item-left">
+        <t-icon name="chat" size="44rpx" color="#6a11cb" />
+        <text class="menu-text">意见反馈</text>
+      </view>
+      <t-icon name="chevron-right" size="40rpx" color="#bbb" />
+    </view>
+    <view class="menu-item" bindtap="navigateToSettings">
+      <view class="menu-item-left">
+        <t-icon name="setting" size="44rpx" color="#00a870" />
+        <text class="menu-text">系统设置</text>
+      </view>
+      <t-icon name="chevron-right" size="40rpx" color="#bbb" />
+    </view>
+  </view>
+</view>

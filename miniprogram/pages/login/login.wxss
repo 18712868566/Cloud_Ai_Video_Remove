@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.header {
+  background-color: #fff;
+  padding: 30rpx;
+  text-align: center;
+  position: relative;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.back-button {
+  position: absolute;
+  left: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #333;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: 500;
+}
+
+.login-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40rpx;
+  margin-top: -50%;
+}
+
+.logo {
+  width: 160rpx;
+  height: 160rpx;
+  background-color: #0052d9;
+  border-radius: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 82, 217, 0.2);
+}
+
+.app-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 60rpx;
+  color: #333;
+}
+
+.wechat-login-btn {
+  width: 85%;
+  border-radius: 80rpx !important;
+  padding: 24rpx 0 !important;
+  margin-bottom: 30rpx;
+  box-shadow: 0 8rpx 24rpx rgba(7, 193, 96, 0.2);
+}
+
+.privacy-policy {
+  margin-top: 80rpx;
+  color: #999;
+  font-size: 24rpx;
+  text-align: center;
+  max-width: 560rpx;
+}
+
+.link {
+  color: #0052d9;
+}

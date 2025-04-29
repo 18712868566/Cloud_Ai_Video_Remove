@@ -1,0 +1,111 @@
+<view class="container">
+  <view class="tutorial-list">
+    <!-- 教程步骤1 -->
+    <view class="tutorial-card">
+      <view class="tutorial-title">
+        <view class="tutorial-number">1</view>
+        <view>复制短视频链接</view>
+      </view>
+      <view class="tutorial-content">
+        <view class="tutorial-text">
+          打开您想要去除水印的短视频平台（如抖音、快手等），找到目标视频，点击"分享"按钮，然后选择"复制链接"选项。
+        </view>
+        <view class="tutorial-image">
+          <t-icon name="link" size="80rpx" />
+        </view>
+        <view class="tutorial-tip">
+          <t-icon name="help-circle" size="36rpx" />
+          <text class="tip-text">提示：大多数短视频平台的分享按钮通常位于视频右侧或底部。</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 教程步骤2 -->
+    <view class="tutorial-card">
+      <view class="tutorial-title">
+        <view class="tutorial-number">2</view>
+        <view>粘贴链接并解析</view>
+      </view>
+      <view class="tutorial-content">
+        <view class="tutorial-text">
+          返回云端AI视频移除小程序，在首页的输入框中粘贴刚才复制的视频链接，然后点击"解析"按钮。系统将自动识别并解析视频内容。
+        </view>
+        <view class="tutorial-image">
+          <t-icon name="search" size="80rpx" />
+        </view>
+        <view class="tutorial-tip">
+          <t-icon name="help-circle" size="36rpx" />
+          <text class="tip-text">提示：确保您的网络连接稳定，以便快速完成解析过程。</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 教程步骤3 -->
+    <view class="tutorial-card">
+      <view class="tutorial-title">
+        <view class="tutorial-number">3</view>
+        <view>选择去除选项</view>
+      </view>
+      <view class="tutorial-content">
+        <view class="tutorial-text">
+          解析完成后，系统会自动识别视频中的水印、logo等元素。您可以选择需要去除的内容，也可以使用AI智能推荐的去除方案。
+        </view>
+        <view class="tutorial-image">
+          <t-icon name="check-rectangle" size="80rpx" />
+        </view>
+        <view class="tutorial-tip">
+          <t-icon name="help-circle" size="36rpx" />
+          <text class="tip-text">提示：AI智能推荐通常能识别出最常见的水印位置，为您节省时间。</text>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 教程步骤4 -->
+    <view class="tutorial-card">
+      <view class="tutorial-title">
+        <view class="tutorial-number">4</view>
+        <view>等待处理并下载</view>
+      </view>
+      <view class="tutorial-content">
+        <view class="tutorial-text">
+          点击"开始处理"按钮后，系统将使用AI技术去除选定的水印元素。处理完成后，您可以预览效果并下载无水印视频。
+        </view>
+        <view class="tutorial-image">
+          <t-icon name="download" size="80rpx" />
+        </view>
+        <view class="tutorial-tip">
+          <t-icon name="help-circle" size="36rpx" />
+          <text class="tip-text">提示：处理时间取决于视频长度和复杂度，通常在几秒到几分钟不等。会员用户享有优先处理权。</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 常见问题部分 -->
+  <view class="faq-section">
+    <view class="faq-title">常见问题</view>
+    
+    <t-collapse defaultValue="{{[0]}}">
+      <t-collapse-panel header="为什么我无法解析某些视频？" value="{{0}}">
+        <view class="faq-answer">
+          部分平台可能对链接进行了特殊加密或限制分享。请确保您复制的是完整链接，并且视频未被设为私密。如果问题持续，可尝试使用备用解析通道。
+        </view>
+      </t-collapse-panel>
+      
+      <t-collapse-panel header="解析后的视频质量会下降吗？" value="{{1}}">
+        <view class="faq-answer">
+          我们采用先进的AI技术，确保在去除水印的同时保持原视频质量。在大多数情况下，您不会注意到明显的质量下降。
+        </view>
+      </t-collapse-panel>
+      
+      <t-collapse-panel header="为什么需要会员才能使用某些功能？" value="{{2}}">
+        <view class="faq-answer">
+          免费用户可以使用基础功能，但受到每日解析次数和处理优先级的限制。会员用户享有更多解析次数、优先处理权和高级功能，如批量解析和高清处理等。
+        </view>
+      </t-collapse-panel>
+    </t-collapse>
+  </view>
+  
+  <t-toast id="t-toast" />
+  <t-message id="t-message" />
+</view>

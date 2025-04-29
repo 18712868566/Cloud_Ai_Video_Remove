@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f5f7fa;
+}
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 88rpx;
+  background-color: #fff;
+  padding: 0 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.back-button {
+  position: absolute;
+  left: 30rpx;
+  color: #333;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: 500;
+}
+
+.settings-container {
+  padding: 30rpx;
+}
+
+.settings-group {
+  background-color: #fff;
+  border-radius: 24rpx;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.logout-button {
+  margin-top: 40rpx;
+}
+
+.version-info {
+  text-align: center;
+  color: #999;
+  font-size: 24rpx;
+  margin-top: 60rpx;
+}

@@ -1,0 +1,243 @@
+/* 个人中心页面样式 */
+.container {
+  padding: 0 0 120rpx 0;
+}
+
+.header {
+  background-color: #fff;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #eaeaea;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: 500;
+}
+
+.header-icons {
+  display: flex;
+  gap: 20rpx;
+}
+
+/* 用户卡片样式 */
+.user-card {
+  margin: 30rpx;
+  padding: 40rpx;
+  border-radius: 32rpx;
+  background: linear-gradient(135deg, #0052d9, #0080ff);
+  color: white;
+  box-shadow: 0 8rpx 30rpx rgba(0, 82, 217, 0.2);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+  border: 6rpx solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.user-details {
+  margin-left: 30rpx;
+}
+
+.user-name-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10rpx;
+}
+
+.user-name {
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-right: 16rpx;
+}
+
+.vip-badge {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  padding: 4rpx 16rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.user-id {
+  font-size: 28rpx;
+  opacity: 0.8;
+  margin-bottom: 16rpx;
+}
+.feature-item {
+  padding: 20rpx;
+}
+.edit-btn {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  color: white !important;
+  font-size: 24rpx !important;
+  padding: 8rpx 24rpx !important;
+  border-radius: 30rpx !important;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.edit-btn::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+  border-radius: 30rpx;
+}
+
+.edit-btn:active {
+  opacity: 0.8;
+  transform: scale(0.98);
+}
+
+/* 卡片通用样式 */
+.card {
+  margin: 30rpx;
+  padding: 30rpx;
+  background-color: #fff;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.card-action {
+  color: #0052d9;
+  font-size: 28rpx;
+}
+
+/* 会员信息样式 */
+.vip-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 20rpx;
+  border-radius: 16rpx;
+}
+
+.vip-status {
+  display: flex;
+  align-items: center;
+}
+
+.vip-level {
+  font-weight: 500;
+  margin-left: 10rpx;
+}
+
+.vip-expire {
+  font-size: 22rpx;
+  color: #888;
+  padding-left: 10rpx;
+}
+
+/* 推荐功能样式 */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20rpx;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.feature-icon {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16rpx;
+}
+
+.feature-name {
+  font-size: 24rpx;
+  color: #333;
+}
+
+/* 菜单样式 */
+.menu-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item-left {
+  display: flex;
+  align-items: center;
+}
+
+.menu-text {
+  margin-left: 20rpx;
+  font-size: 30rpx;
+}
+.contact-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  display: inline-block;
+}
+
+.feature-item.button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: inherit;
+  color: inherit;
+}
+
+button::after {
+  border: none;
+}

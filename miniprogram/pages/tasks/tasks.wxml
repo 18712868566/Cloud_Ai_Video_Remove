@@ -1,0 +1,32 @@
+<view class="container">
+  <view class="task-list">
+    <view class="task-item">
+      <view class="task-info">
+        <view class="task-title">登录即享</view>
+        <view class="task-desc">新人福利</view>
+        <view class="task-reward">解析视频次数 +10</view>
+      </view>
+      <t-button theme="success" size="small" disabled>已完成</t-button>
+    </view>
+    
+    <view class="task-item">
+      <view class="task-info">
+        <view class="task-title">每日签到</view>
+        <view class="task-desc">连续签到奖励更多</view>
+        <view class="task-reward">解析视频次数 +1</view>
+      </view>
+      <t-button theme="primary" size="small" bindtap="completeTask" data-id="1">去完成</t-button>
+    </view>
+    
+    <view class="task-item">
+      <view class="task-info">
+        <view class="task-title">邀请好友</view>
+        <view class="task-desc">邀请一位好友使用小程序</view>
+        <view class="task-reward">解析视频次数 +3</view>
+      </view>
+      <t-button theme="primary" size="small" bindtap="completeTask" data-id="2">去完成</t-button>
+    </view>
+  </view>
+  
+  <t-toast id="t-toast" />
+</view>

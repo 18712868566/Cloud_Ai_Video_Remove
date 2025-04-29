@@ -1,0 +1,33 @@
+<view class="container">
+  <!-- 记录列表 -->
+  <view class="history-list">
+    <block wx:if="{{historyList && historyList.length > 0}}">
+      <!-- 日期分组 -->
+      <view class="date-group">
+        <!-- 视频记录项 -->
+        <view class="video-item" wx:for="{{historyList}}" wx:key="id" bindtap="viewVideoDetail" data-id="{{item.id}}">
+          <view class="video-info">
+            <view class="video-title">{{item.title}}</view>
+            <view class="video-meta">
+              <text class="video-time">{{item.time}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    
+    <!-- 空状态 -->
+    <view class="empty-state" wx:else>
+      <t-icon name="time" size="80rpx" />
+      <view class="empty-text">暂无解析记录</view>
+    </view>
+  </view>
+  
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{hasMore}}">
+    <t-loading theme="circular" size="40rpx" text="加载更多..." />
+  </view>
+  
+  <t-toast id="t-toast" />
+  <t-message id="t-message" />
+</view>

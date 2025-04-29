@@ -1,0 +1,14 @@
+<view class="container">
+  <view class="login-container">
+    <view class="logo">
+      <t-icon name="video" size="80rpx" color="#fff" />
+    </view>
+    <view class="app-name">云端AI视频移除</view>
+    <t-button theme="primary" icon="logo-wechat" class="wechat-login-btn" bindtap="handleLogin">
+      微信一键登录
+    </t-button>
+  </view>
+  
+  <t-toast id="t-toast" />
+  <t-message id="t-message" />
+</view>

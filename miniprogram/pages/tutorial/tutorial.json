@@ -1,0 +1,10 @@
+{
+    "usingComponents": {
+        "t-icon": "tdesign-miniprogram/icon/icon",
+        "t-toast": "tdesign-miniprogram/toast/toast",
+        "t-message": "tdesign-miniprogram/message/message",
+        "t-collapse": "tdesign-miniprogram/collapse/collapse",
+        "t-collapse-panel": "tdesign-miniprogram/collapse-panel/collapse-panel"
+    },
+    "navigationBarTitleText": "使用教程&常见问题"
+}

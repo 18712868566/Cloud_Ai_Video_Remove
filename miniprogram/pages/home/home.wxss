@@ -1,0 +1,74 @@
+/* ... existing code ... */
+
+/* 公告区域样式 */
+.announcement {
+  background-color: #e8f4ff;
+  padding: 16rpx 24rpx;
+  border-radius: 16rpx;
+  margin: 24rpx;
+  display: flex;
+  align-items: center;
+}
+
+.announcement-icon {
+  flex-shrink: 0;
+  margin-right: 16rpx;
+}
+
+.announcement-container {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  height: 40rpx;
+  display: flex;
+}
+
+.announcement-text {
+  white-space: nowrap;
+  color: #333;
+  font-size: 28rpx;
+  animation: marquee 15s linear infinite;
+  padding-right: 50rpx; /* 两段文本之间的间距 */
+}
+
+.announcement-text-duplicate {
+  animation-delay: 7.5s; /* 设置为总动画时间的一半 */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+/* 分享按钮样式 */
+.share-btn {
+  font-size: inherit;
+  font-weight: normal;
+  line-height: normal;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  background: #fff;
+}
+
+.share-btn::after {
+  border: none;
+}
+
+/* 输入框 */
+.custom-class{
+  border: 1rpx solid #6a6a6b;
+  border-radius: 10rpx;
+  margin: 10px auto 40rpx;
+}
+.video-tit{
+  color: #6a6a6b;
+}
+/* ... existing code ... */

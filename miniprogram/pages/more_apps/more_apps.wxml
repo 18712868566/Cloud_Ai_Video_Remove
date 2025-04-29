@@ -1,0 +1,63 @@
+<view class="container">
+  <view class="app-list">
+    <view class="app-category">
+      <view class="category-title">图片处理</view>
+      <view class="app-grid">
+        <view class="app-item" bindtap="navigateToApp" data-app="image-watermark">
+          <view class="app-icon">
+            <t-icon name="brush" size="48rpx" />
+          </view>
+          <view class="app-name">图片涂抹去水印</view>
+          <view class="app-desc">智能去除图片上的任何物体</view>
+        </view>
+        <view class="app-item" bindtap="navigateToApp" data-app="image-compress">
+          <view class="app-icon">
+            <t-icon name="image" size="48rpx" />
+          </view>
+          <view class="app-name">图片压缩</view>
+          <view class="app-desc">快速压缩图片大小</view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="app-category">
+      <view class="category-title">视频工具</view>
+      <view class="app-grid">
+        <view class="app-item" bindtap="navigateToApp" data-app="video-text">
+          <view class="app-icon">
+            <t-icon name="catalog" size="48rpx" />
+          </view>
+          <view class="app-name">视频文案提取</view>
+          <view class="app-desc">一键提取视频中的文安</view>
+        </view>
+        <view class="app-item" bindtap="navigateToApp" data-app="backup-watermark">
+          <view class="app-icon">
+            <t-icon name="video" size="48rpx" />
+          </view>
+          <view class="app-name">备用去水印</view>
+          <view class="app-desc">提供额外的去水印通道</view>
+        </view>
+      </view>
+    </view>
+    
+    <view class="app-category">
+      <view class="category-title">其他工具</view>
+      <view class="app-grid">
+        <!-- <view class="app-item" bindtap="navigateToHistory">
+          <view class="app-icon">
+            <t-icon name="time" size="48rpx" />
+          </view>
+          <view class="app-name">解析记录</view>
+          <view class="app-desc">查看历史解析记录</view>
+        </view> -->
+        <view class="app-item" bindtap="navigateToApp" data-app="md5">
+          <view class="app-icon">
+            <t-icon name="fingerprint" size="48rpx" />
+          </view>
+          <view class="app-name">MD5修改</view>
+          <view class="app-desc">二创查重必备</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

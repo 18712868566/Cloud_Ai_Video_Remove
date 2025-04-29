@@ -1,0 +1,41 @@
+<view class="container">
+    <view class="header">
+        <text class="title">短视频去水印</text>
+    </view>
+    <view class="announcement">
+        <view class="announcement-content">
+            <t-icon name="sound" size="40rpx" />
+            <text class="announcement-text">公告：本工具支持抖音、快手、小红书、微博等平台的视频去水印，使用前请确保链接正确。</text>
+        </view>
+    </view>
+    <view class="input-area">
+        <t-textarea label="视频链接" placeholder="请粘贴视频分享链接..." maxlength="{{500}}" autosize value="{{videoUrl}}" bind:change="onInputChange" />
+        <view class="button-group">
+            <t-button theme="light" block bindtap="handlePaste" icon="paste">粘贴</t-button>
+            <t-button theme="light" block bindtap="handleClear" icon="close">清空</t-button>
+        </view>
+        <t-button theme="primary" block bindtap="handleParse" icon="play-circle-stroke">
+            开始解析
+        </t-button>
+    </view>
+    <view class="features">
+        <view class="feature-item" bindtap="navigateToTutorial">
+            <t-icon name="help-circle" size="48rpx" />
+            <text>使用教程</text>
+        </view>
+        <!-- <view class="feature-item" bindtap="handleBatchParse">
+            <t-icon name="queue" size="48rpx" />
+            <text>批量解析</text>
+        </view> -->
+        <view class="feature-item" bindtap="navigateToHistory">
+            <t-icon name="time" size="48rpx" />
+            <text>解析记录</text>
+        </view>
+        <view class="feature-item" bindtap="handleInvite">
+            <t-icon name="user-add" size="48rpx" />
+            <text>邀请好友</text>
+        </view>
+    </view>
+    <t-toast id="t-toast" />
+    <t-message id="t-message" />
+</view>

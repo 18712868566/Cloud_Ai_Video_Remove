@@ -1,0 +1,83 @@
+<view class="container">
+
+  <view class="vip-card">
+    <view class="vip-header">
+      <view class="vip-title">普通用户</view>
+      <view class="vip-icon">
+        <t-icon name="user" size="48rpx" color="#FFD700" />
+      </view>
+    </view>
+    <view class="vip-info">
+      <view class="vip-status">今日剩余解析次数：3次</view>
+      <view class="vip-expire">升级会员可享无限次数解析</view>
+    </view>
+    <view class="vip-benefits">
+      <view class="vip-benefit">
+        <view class="vip-benefit-icon">
+          <t-icon name="discount" size="40rpx" />
+        </view>
+        <view>无限解析</view>
+      </view>
+      <view class="vip-benefit">
+        <view class="vip-benefit-icon">
+          <t-icon name="upload" size="40rpx" />
+        </view>
+        <view>高清下载</view>
+      </view>
+      <view class="vip-benefit">
+        <view class="vip-benefit-icon">
+          <t-icon name="lightning" size="40rpx" />
+        </view>
+        <view>优先处理</view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="plan-container">
+    <view class="plan-title">会员套餐</view>
+    <view class="plan-options">
+      <view class="plan-option {{selectedPlan === 'monthly' ? 'selected' : ''}}" bindtap="selectPlan" data-plan="monthly">
+        <view class="plan-name">月度会员</view>
+        <view class="plan-price">¥19.9</view>
+        <view class="plan-original">原价：¥29.9</view>
+      </view>
+      <view class="plan-option {{selectedPlan === 'yearly' ? 'selected' : ''}} best-value" bindtap="selectPlan" data-plan="yearly">
+        <view class="plan-name">年度会员</view>
+        <view class="plan-price">¥99.9</view>
+        <view class="plan-original">原价：¥199.9</view>
+      </view>
+    </view>
+    <t-button theme="primary" block bindtap="handlePurchase">立即开通</t-button>
+  </view>
+  
+  <view class="features-container">
+    <view class="features-title">会员特权</view>
+    <view class="feature-item">
+      <view class="feature-icon">
+        <t-icon name="discount" size="44rpx" color="#0052d9" />
+      </view>
+      <view class="feature-text">无限次数解析视频，不再受每日限制</view>
+    </view>
+    <view class="feature-item">
+      <view class="feature-icon">
+        <t-icon name="upload" size="44rpx" color="#0052d9" />
+      </view>
+      <view class="feature-text">支持高清视频下载，画质清晰不压缩</view>
+    </view>
+    <view class="feature-item">
+      <view class="feature-icon">
+        <t-icon name="lightning" size="44rpx" color="#0052d9" />
+      </view>
+      <view class="feature-text">优先处理队列，高峰期也能快速完成</view>
+    </view>
+    <view class="feature-item">
+      <view class="feature-icon">
+        <t-icon name="service" size="44rpx" color="#0052d9" />
+      </view>
+      <view class="feature-text">专属客服支持，问题快速解决</view>
+    </view>
+  </view>
+  
+  <t-toast id="t-toast" />
+  <t-message id="t-message" />
+</view>

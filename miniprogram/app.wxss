@@ -1,10 +1,263 @@
-/**app.wxss**/
+/* 全局样式 */
+page {
+  font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  background-color: #f5f7fa;
+  padding-bottom: 140rpx;
+}
+
 .container {
-  height: 100%;
+  padding: 0 0 120rpx 0;
+}
+
+.header {
+  background-color: #fff;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #eaeaea;
+  text-align: center;
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: 500;
+}
+
+/* 首页样式 */
+.announcement {
+  background-color: #e8f4ff;
+  padding: 20rpx 30rpx;
+  border-radius: 16rpx;
+  margin: 30rpx;
+  position: relative;
+  overflow: hidden;
+}
+
+.announcement-content {
+  display: flex;
+  align-items: center;
+}
+
+.announcement-text {
+  margin-left: 10rpx;
+  white-space: nowrap;
+}
+
+.input-area {
+  background-color: #fff;
+  padding: 40rpx;
+  margin: 30rpx;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.button-group {
+  display: flex;
+  gap: 20rpx;
+  margin: 20rpx 0;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+  margin: 30rpx;
+}
+
+.feature-item {
+  background-color: #fff;
+  padding: 30rpx;
+  border-radius: 24rpx;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 任务页面样式 */
+.task-progress {
+  background-color: #fff;
+  padding: 30rpx;
+  border-radius: 24rpx;
+  margin: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.progress-header {
+  display: flex;
   justify-content: space-between;
-  padding: 200rpx 0;
-  box-sizing: border-box;
-} 
+  margin-bottom: 20rpx;
+}
+
+.task-list {
+  margin: 30rpx;
+}
+
+.task-item {
+  background-color: #fff;
+  padding: 30rpx;
+  border-radius: 24rpx;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-info {
+  flex: 1;
+}
+
+.task-title {
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.task-desc {
+  color: #666;
+  font-size: 28rpx;
+}
+
+.task-reward {
+  color: #ff9800;
+  font-size: 28rpx;
+  margin-top: 10rpx;
+}
+
+/* 更多应用页面样式 */
+.app-list {
+  margin: 30rpx;
+}
+
+.app-category {
+  margin-bottom: 40rpx;
+}
+
+.category-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+  color: #333;
+}
+
+.app-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30rpx;
+}
+
+.app-item {
+  background-color: #fff;
+  padding: 30rpx;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.app-icon {
+  width: 100rpx;
+  height: 100rpx;
+  background-color: #e8f4ff;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20rpx;
+  color: #0052d9;
+}
+
+.app-name {
+  font-weight: 500;
+  margin-bottom: 10rpx;
+}
+
+.app-desc {
+  color: #666;
+  font-size: 24rpx;
+}
+
+/* 个人中心页面样式 */
+.user-card {
+  background: linear-gradient(135deg, #0052d9, #0080ff);
+  border-radius: 32rpx;
+  color: white;
+  padding: 40rpx;
+  margin: 30rpx;
+  box-shadow: 0 8rpx 30rpx rgba(0, 82, 217, 0.3);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+  margin-right: 20rpx;
+}
+
+.username {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.user-level {
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 6rpx 16rpx;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+}
+
+.user-stats {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 40rpx;
+  font-weight: bold;
+  display: block;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  opacity: 0.8;
+}
+
+.menu-list {
+  margin: 30rpx;
+}
+
+.menu-group {
+  background-color: #fff;
+  border-radius: 24rpx;
+  overflow: hidden;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.05);
+}
+
+.menu-item {
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item text {
+  flex: 1;
+  margin-left: 20rpx;
+}
