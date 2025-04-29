@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解析记录 - 云端AI视频移除</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding-top: 20px;
+            padding-bottom: 80px;
+        }
+
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: #fff;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            border-top: 1px solid #eaeaea;
+            z-index: 10;
+        }
+
+        .tab-active {
+            color: #0052d9;
+            border-bottom: 2px solid #0052d9;
+        }
+
+        .video-thumbnail {
+            aspect-ratio: 16/9;
+            background-color: #eee;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .video-item {
+            transition: all 0.2s;
+        }
+
+        .video-item:active {
+            background-color: #f0f0f0;
+        }
+        .text-ccyc{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+            word-break: break-all;
+            color: #7e7e7e;
+        }
+    </style>
+</head>
+
+<body class="h-full">
+    <!-- 顶部导航栏 -->
+    <div class="header px-4 py-3 flex items-center justify-between">
+        <h1 class="text-lg font-medium">返回首页</h1>
+    </div>
+
+    <!-- 标签页 -->
+    <div class="bg-white flex border-b">
+        <button class="flex-1 py-3 text-center font-medium tab-active">
+            解析记录
+        </button>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="container mx-auto px-4 py-4">
+        <!-- 日期分组 -->
+        <div class="mb-6">
+            <!-- 列表项 -->
+            <div class="video-item bg-white rounded-lg shadow-sm p-4 mb-3">
+                <div class="">
+                    <h3 class="font-medium mb-2 text-ccyc">【小白教程】手把手教你用Cursor+微信云开发做个小程序 | 小白 AI 编程 | 零基础】
+                        https://www.bilibili.com/video/BV1jx5kziEqz/?share_source=copy_web&vd_source=6bb53c2ce5966d7eef25c40f2a6ccb17
+                    </h3>
+                    <div class="flex items-center text-xs text-gray-500 mb-1">
+                        <span>2025年4月28日22:40:56</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

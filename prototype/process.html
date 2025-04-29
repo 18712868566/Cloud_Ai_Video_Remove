@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频处理 - 云端AI视频移除</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            padding-top: 20px;
+            padding-bottom: 80px;
+        }
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: #fff;
+            border-bottom: 1px solid #eaeaea;
+        }
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            border-top: 1px solid #eaeaea;
+            z-index: 10;
+        }
+        .upload-area {
+            border: 2px dashed #0052d9;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+        .upload-area:hover {
+            background-color: rgba(0, 82, 217, 0.05);
+        }
+        .btn-primary {
+            background-color: #0052d9;
+            color: white;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #003eb3;
+        }
+        .progress-bar {
+            height: 6px;
+            border-radius: 3px;
+            background-color: #e0e0e0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #0052d9;
+            width: 70%;
+        }
+    </style>
+</head>
+<body class="h-full">
+    <!-- 顶部导航栏 -->
+    <div class="header px-4 py-3 flex items-center justify-between">
+        <div class="flex items-center">
+            <button class="mr-2">
+                <i class="ri-arrow-left-line text-xl"></i>
+            </button>
+            <h1 class="text-lg font-medium">视频处理</h1>
+        </div>
+        <button>
+            <i class="ri-question-line text-xl text-gray-600"></i>
+        </button>
+    </div>
+
+    <!-- 主要内容区域 -->
+    <div class="container mx-auto px-4 py-4">
+        <!-- 上传区域 -->
+        <div class="upload-area p-6 mb-6 flex flex-col items-center justify-center">
+            <div class="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-4">
+                <i class="ri-upload-cloud-2-line text-3xl text-blue-600"></i>
+            </div>
+            <p class="text-center mb-2 font-medium">点击或拖拽上传视频</p>
+            <p class="text-center text-sm text-gray-500 mb-4">支持MP4、MOV、AVI等格式，最大200MB</p>
+            <button class="btn-primary px-6 py-2 rounded-full text-sm font-medium">
+                选择视频文件
+            </button>
+        </div>
+
+        <!-- 处理选项 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 mb-6">
+            <h2 class="font-medium mb-4">处理选项</h2>
+            
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">移除对象</label>
+                <div class="grid grid-cols-4 gap-2">
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-2 flex flex-col items-center">
+                        <i class="ri-user-line text-xl text-blue-600 mb-1"></i>
+                        <span class="text-xs">人物</span>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-2 flex flex-col items-center">
+                        <i class="ri-car-line text-xl text-gray-600 mb-1"></i>
+                        <span class="text-xs">车辆</span>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-2 flex flex-col items-center">
+                        <i class="ri-text-line text-xl text-gray-600 mb-1"></i>
+                        <span class="text-xs">文字</span>
+                    </div>
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-2 flex flex-col items-center">
+                        <i class="ri-more-line text-xl text-gray-600 mb-1"></i>
+                        <span class="text-xs">更多</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">输出质量</label>
+                <div class="flex items-center justify-between">
+                    <span class="text-xs text-gray-500">标准</span>
+                    <div class="mx-2 flex-grow">
+                        <input type="range" class="w-full" min="1" max="3" value="2">
+                    </div>
+                    <span class="text-xs text-gray-500">高清</span>
+                </div>
+            </div>
+            
+            <div class="mb-4">
+                <div class="flex items-center justify-between">
+                    <label class="text-sm font-medium text-gray-700">背景修复增强</label>
+                    <label class="inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer" checked>
+                        <div class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+                    </label>
+                </div>
+            </div>
+            
+            <button class="btn-primary w-full py-3 rounded-lg font-medium">
+                开始处理
+            </button>
+        </div>
+        
+        <!-- 处理中的视频 -->
+        <div class="bg-white rounded-lg shadow-sm p-4 mb-4">
+            <div class="flex items-center mb-3">
+                <div class="w-16 h-16 bg-gray-100 rounded-lg mr-3 flex items-center justify-center overflow-hidden">
+                    <i class="ri-movie-line text-3xl text-gray-400"></i>
+                </div>
+                <div class="flex-grow">
+                    <h3 class="font-medium mb-1">我的旅行视频.mp4</h3>
+                    <div class="flex items-center text-xs text-gray-500 mb-2">
+                        <span>120MB</span>
+                        <span class="mx-2">·</span>
+                        <span>01:30</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between text-sm">
+                <span class="text-blue-600">70%</span>
+                <span class="text-gray-500">预计剩余时间: 2分钟</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="bottom-nav py-2 px-4">
+        <div class="flex justify-around">
+            <a href="home.html" class="flex flex-col items-center">
+                <i class="ri-home-4-line text-xl text-gray-400"></i>
+                <span class="text-xs mt-1 text-gray-500">首页</span>
+            </a>
+            <a href="process.html" class="flex flex-col items-center">
+                <i class="ri-movie-line text-xl text-blue-600"></i>
+                <span class="text-xs mt-1 text-blue-600">处理</span>
+            </a>
+            <a href="history.html" class="flex flex-col items-center">
+                <i class="ri-history-line text-xl text-gray-400"></i>
+                <span class="text-xs mt-1 text-gray-500">历史</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center">
+                <i class="ri-user-3-line text-xl text-gray-400"></i>
+                <span class="text-xs mt-1 text-gray-500">我的</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
