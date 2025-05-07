@@ -7,17 +7,80 @@ Page({
         videoUrl: '',
         announcement: "公告：本工具支持抖音、快手、小红书、微博等平台的视频去水印，使用前请确保链接正确。新用户首次登录即送10次解析机会！",
         // 解析状态
-        // showResult: true,
         showResult: false,
         // 视频解析结果
         resultVideoUrl: '',
         // 视频封面
         resultVideoPoster: '',
         // 视频时长
-        // resultVideoDuration: '',
+        resultVideoDuration: '',
         // 视频标题
         resultVideoTitle: '',
-        resultPics: []
+        resultPics: [],
+        // 用户信息
+        userInfo: null,
+        // 是否已登录
+        isLoggedIn: false,
+        // 剩余解析次数
+        remainingCount: 0,
+        // 登录弹窗显示状态
+        showLoginDialog: false
+    },
+    /**
+ * 生命周期函数--监听页面加载
+ */
+    onLoad: function (options) {
+        // 初始化云开发
+        if (!wx.cloud) {
+            console.error('请使用 2.2.3 或以上的基础库以使用云能力');
+        } else {
+            wx.cloud.init({
+                env: 'cloud1-4gwhtw1l3224ada7',
+                traceUser: true,
+            });
+        }
+
+        // 检查用户登录状态
+        this.checkLoginStatus();
+    },
+    /**
+     * 检查用户登录状态
+     */
+    checkLoginStatus() {
+        wx.showLoading({
+            title: '加载中...',
+        });
+
+        // 获取用户登录状态
+        wx.cloud.callFunction({
+            name: 'checkLogin',
+            success: res => {
+                wx.hideLoading();
+
+                if (res.result && res.result.isLoggedIn) {
+                    // 用户已登录
+                    this.setData({
+                        isLoggedIn: true,
+                        userInfo: res.result.userInfo,
+                        remainingCount: res.result.remainingCount || 0
+                    });
+
+                    // 更新公告内容
+                    this.updateAnnouncement(`公告：本工具支持抖音、快手、小红书、微博等平台的视频去水印。${this.data.userInfo.nickName}，您还有${this.data.remainingCount}次解析机会！`);
+                } else {
+                    // 用户未登录
+                    this.setData({
+                        isLoggedIn: false,
+                        userInfo: null,
+                        remainingCount: 0
+                    });
+                }
+            },
+            fail: err => {
+                wx.hideLoading();
+                console.error('检查登录状态失败:', err);
+            }
+        });
     },
     // 可以添加方法来动态更新公告内容
     updateAnnouncement(newContent) {
@@ -51,8 +114,8 @@ Page({
         });
     },
     /**
- * 清除视频链接
- */
+     * 清除视频链接
+     */
     handleClear() {
         this.setData({
             videoUrl: '',
@@ -79,6 +142,27 @@ Page({
             });
             return;
         }
+
+        // 检查是否已登录
+        if (!this.data.isLoggedIn) {
+            // 显示登录弹窗
+            this.setData({
+                showLoginDialog: true
+            });
+            return;
+        }
+
+        // 检查剩余解析次数
+        if (this.data.remainingCount <= 0) {
+            Message.error({
+                context: this,
+                offset: [20, 32],
+                duration: 3000,
+                content: '您的解析次数已用完，请分享给好友获取更多次数'
+            });
+            return;
+        }
+
         if (!this.data.videoUrl) {
             Message.error({
                 context: this,
@@ -88,27 +172,27 @@ Page({
             });
             return;
         }
+
         // 显示加载状态
         wx.showLoading({
             title: '正在解析...',
         });
 
-        // 准备API请求参数
-        const token = 'bktuippakedwfmxmbyvvicr7juol1i'; // 这里留空，由您自己配置
-        const url = encodeURIComponent(this.data.videoUrl);
-        const apiUrl = `https://v3.alapi.cn/api/video/url?token=${token}&url=${url}`;
-        // 发起API请求
-        wx.request({
-            url: apiUrl,
-            method: 'GET',
-            success: (res) => {
+        // 调用云函数解析视频
+        wx.cloud.callFunction({
+            name: 'parseVideo',
+            data: {
+                url: this.data.videoUrl
+            },
+            success: res => {
                 wx.hideLoading();
 
-                // 检查API返回结果
-                if (res.statusCode === 200 && res.data && res.data.code === 200) {
-                    const data = res.data.data;
+                // 检查云函数返回结果
+                if (res.result && res.result.code === 200) {
+                    const data = res.result.data;
 
                     console.log('API返回数据:', data);
+
                     // 更新页面数据，显示解析结果
                     this.setData({
                         showResult: true,
@@ -117,12 +201,27 @@ Page({
                         resultVideoDuration: data.duration || '',
                         resultVideoTitle: data.title || '',
                         resultPics: data.pics || [],
+                        // 更新剩余解析次数
+                        remainingCount: this.data.remainingCount - 1
                     });
+
+                    // 更新公告内容
+                    this.updateAnnouncement(`公告：本工具支持抖音、快手、小红书、微博等平台的视频去水印。${this.data.userInfo.nickName}，您还有${this.data.remainingCount}次解析机会！`);
+
+                    // 保存到历史记录
                     this.saveToHistory({
                         url: this.data.videoUrl,
                         title: data.title || '未知标题',
-                        cover: data.cover || '',
+                        cover: data.cover_url || '',
                         time: new Date().toLocaleString()
+                    });
+
+                    // 更新用户解析次数
+                    wx.cloud.callFunction({
+                        name: 'updateUserCount',
+                        data: {
+                            count: this.data.remainingCount
+                        }
                     });
 
                     Toast({
@@ -133,29 +232,102 @@ Page({
                         direction: 'column'
                     });
                 } else {
-                    // 处理API错误
+                    // 处理云函数错误
                     Message.error({
                         context: this,
                         offset: [20, 32],
                         duration: 3000,
-                        content: res.data.msg || '解析失败，请检查链接是否正确'
+                        content: res.result.msg || '解析失败，请检查链接是否正确'
                     });
                 }
             },
-            fail: (err) => {
+            fail: err => {
                 wx.hideLoading();
+                console.error('调用云函数失败:', err);
                 Message.error({
                     context: this,
                     offset: [20, 32],
                     duration: 3000,
                     content: '网络请求失败，请检查网络连接'
                 });
-                console.error('API请求失败:', err);
             }
         });
     },
-    // ... existing code ...
 
+    /**
+ * 处理用户登录
+ */
+    handleLogin() {
+        wx.showLoading({
+            title: '登录中...',
+        });
+
+        // 获取用户信息
+        wx.getUserProfile({
+            desc: '用于完善会员资料',
+            success: userRes => {
+                // 调用云函数进行登录
+                wx.cloud.callFunction({
+                    name: 'login',
+                    data: {
+                        userInfo: userRes.userInfo
+                    },
+                    success: res => {
+                        wx.hideLoading();
+
+                        if (res.result && res.result.code === 200) {
+                            // 登录成功
+                            this.setData({
+                                isLoggedIn: true,
+                                userInfo: userRes.userInfo,
+                                remainingCount: res.result.remainingCount || 10,
+                                showLoginDialog: false
+                            });
+
+                            // 更新公告内容
+                            this.updateAnnouncement(`公告：本工具支持抖音、快手、小红书、微博等平台的视频去水印。${this.data.userInfo.nickName}，您还有${this.data.remainingCount}次解析机会！`);
+
+                            Toast({
+                                context: this,
+                                selector: '#t-toast',
+                                message: '登录成功',
+                                theme: 'success',
+                                direction: 'column'
+                            });
+                        } else {
+                            // 登录失败
+                            Message.error({
+                                context: this,
+                                offset: [20, 32],
+                                duration: 3000,
+                                content: res.result.msg || '登录失败，请稍后再试'
+                            });
+                        }
+                    },
+                    fail: err => {
+                        wx.hideLoading();
+                        console.error('调用登录云函数失败:', err);
+                        Message.error({
+                            context: this,
+                            offset: [20, 32],
+                            duration: 3000,
+                            content: '登录失败，请稍后再试'
+                        });
+                    }
+                });
+            },
+            fail: err => {
+                wx.hideLoading();
+                console.error('获取用户信息失败:', err);
+                Message.error({
+                    context: this,
+                    offset: [20, 32],
+                    duration: 3000,
+                    content: '获取用户信息失败'
+                });
+            }
+        });
+    },
     // 预览图片
     previewImage(e) {
         const url = e.currentTarget.dataset.url;
@@ -164,7 +336,6 @@ Page({
             urls: this.data.resultPics
         });
     },
-
     // 复制图片链接
     copyPicLink(e) {
         const url = e.currentTarget.dataset.url;
@@ -181,7 +352,6 @@ Page({
             }
         });
     },
-
     // 下载图片
     downloadPic(e) {
         const url = e.currentTarget.dataset.url;
@@ -238,7 +408,6 @@ Page({
             }
         });
     },
-
     /**
  * 保存到历史记录
  */
@@ -289,7 +458,6 @@ Page({
             });
         }, 1500);
     },
-
     // 复制封面链接
     copyWithCover() {
         wx.setClipboardData({
@@ -305,7 +473,6 @@ Page({
             }
         });
     },
-
     // 保存封面
     saveCover() {
         wx.showLoading({
@@ -324,7 +491,6 @@ Page({
             });
         }, 1000);
     },
-
     // 使用备用下载通道
     useAlternativeDownload() {
         wx.showLoading({
@@ -387,5 +553,13 @@ Page({
             path: '/pages/home/home',
             imageUrl: '/assets/images/share.png'
         };
+    },
+    /**
+ * 关闭登录弹窗
+ */
+    closeLoginDialog() {
+        this.setData({
+            showLoginDialog: false
+        });
     }
 });
