@@ -19,6 +19,67 @@
         </view>
         <t-button theme="primary" block bindtap="handleParse">开始解析</t-button>
     </view>
+    <!-- 解析结果展示区域 -->
+    <view class="result-area" wx:if="{{showResult}}">
+        <view class="result-title">解析结果</view>
+        <!-- 视频结果展示 -->
+        <block wx:if="{{resultVideoUrl!=''}}">
+            <!-- 视频预览区域 -->
+            <view class="video-preview-container">
+                <video class="video-preview" src="{{resultVideoUrl}}" poster="{{resultVideoPoster}}" show-center-play-btn="{{true}}" controls="{{true}}" object-fit="cover"></video>
+                <!-- <view class="video-duration">{{resultVideoDuration || '00:21'}}</view> -->
+            </view>
+            <!-- 操作按钮区域 -->
+            <view class="action-buttons">
+                <view class="action-row">
+                    <t-button theme="primary" variant="outline" block icon="link" bindtap="copyNoWatermarkLink">
+                        复制无水印链接
+                    </t-button>
+                    <t-button theme="primary" block icon="download" bindtap="saveToPhone">
+                        保存到手机
+                    </t-button>
+                </view>
+                <view class="action-row">
+                    <t-button theme="danger" variant="outline" block icon="link" bindtap="copyWithCover">
+                        复制封面链接
+                    </t-button>
+                    <t-button theme="success" block icon="photo" bindtap="saveCover">保存封面</t-button>
+                </view>
+                <!-- <t-button theme="warning" block icon="download" bindtap="useAlternativeDownload">
+                    下载通道二（保存失败时使用）
+                </t-button> -->
+                <t-button theme="default" block icon="edit" bindtap="copyVideoTitle">
+                    复制视频标题文案
+                </t-button>
+            </view>
+        </block>
+        <!-- 图文结果展示 -->
+        <block wx:elif="{{resultPics && resultPics.length > 0}}">
+            <view class="pics-container">
+                <view class="button-group">
+                    <t-button theme="light" size="large" icon="edit" bindtap="copyVideoTitle">
+                        复制标题文案
+                    </t-button>
+                    <t-button theme="light" size="large" icon="file-copy" bindtap="saveAllPics">
+                        保存所有图片
+                    </t-button>
+                </view>
+                <view class="pics-grid">
+                    <view class="pic-item" wx:for="{{resultPics}}" wx:key="index">
+                        <image class="pic-image" src="{{item}}" mode="widthFix" bindtap="previewImage" data-url="{{item}}"></image>
+                        <view class="pic-actions">
+                            <t-button size="small" theme="primary" variant="outline" bindtap="copyPicLink" data-url="{{item}}">
+                                复制链接
+                            </t-button>
+                            <t-button size="small" theme="primary" bindtap="downloadPic" data-url="{{item}}">
+                                下载图片
+                            </t-button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
     <view class="features">
         <view class="feature-item" bindtap="navigateToTutorial">
             <t-icon name="help-circle" size="48rpx" />
@@ -33,7 +94,7 @@
             <t-icon name="logo-wechat-stroke" size="48rpx" color="#00a870" />
             <text>分享给好友</text>
         </button>
-        <view class="feature-item"  style="background-color:rgb(255, 221, 216);">
+        <view class="feature-item" style="background-color:rgb(255, 221, 216);">
             <t-icon name="heart" size="48rpx" color="#ff0000" />
             <text>赞助作者</text>
         </view>
