@@ -22,47 +22,55 @@ App({
     }
     this.globalData = {
       userInfo: null,
-      isLoggedIn: false
+      isLoggedIn: false,
+      remainingCount: 0
     },
       // 检查登录状态
       this.checkLoginStatus();
   },
-
-
-
   // 检查登录状态
   checkLoginStatus() {
     const isLoggedIn = wx.getStorageSync('isLoggedIn') || false;
     const userInfo = wx.getStorageSync('userInfo') || null;
+    const remainingCount = wx.getStorageSync('remainingCount') || 0;
 
     if (isLoggedIn && userInfo) {
       this.globalData.userInfo = userInfo;
+      this.globalData.isLoggedIn = true;
+      this.globalData.remainingCount = remainingCount;
       return true;
     }
     return false;
   },
-  // 导航前检查登录状态
-  navigateWithLoginCheck(pageUrl) {
-    if (this.checkLoginStatus()) {
-      // 已登录，直接跳转
-      if (pageUrl.startsWith('/pages/')) {
-        // 判断是否为 tabBar 页面
-        const tabBarPages = ['/pages/home/home', '/pages/tasks/tasks', '/pages/profile/profile'];
-        if (tabBarPages.includes(pageUrl)) {
-          wx.switchTab({
-            url: pageUrl
-          });
-        } else {
-          wx.navigateTo({
-            url: pageUrl
-          });
-        }
-      }
-    } else {
-      // 未登录，跳转到登录页面，并传递目标页面路径
-      wx.navigateTo({
-        url: `/pages/login/login?sourcePage=${encodeURIComponent(pageUrl)}`
-      });
-    }
+  // 添加保存用户信息的方法
+  saveUserInfo(userInfo, remainingCount) {
+    // 保存到全局数据
+    this.globalData.userInfo = userInfo;
+    this.globalData.isLoggedIn = true;
+    this.globalData.remainingCount = remainingCount;
+
+    // 同时保存到本地存储
+    wx.setStorageSync('isLoggedIn', true);
+    wx.setStorageSync('userInfo', userInfo);
+    wx.setStorageSync('remainingCount', remainingCount);
+  },
+
+  // 添加更新用户解析次数的方法
+  updateRemainingCount(count) {
+    this.globalData.remainingCount = count;
+    wx.setStorageSync('remainingCount', count);
+  },
+
+  // 添加登出方法
+  logout() {
+    // 清除全局数据
+    this.globalData.userInfo = null;
+    this.globalData.isLoggedIn = false;
+    this.globalData.remainingCount = 0;
+
+    // 清除本地存储
+    wx.removeStorageSync('isLoggedIn');
+    wx.removeStorageSync('userInfo');
+    wx.removeStorageSync('remainingCount');
   }
 });

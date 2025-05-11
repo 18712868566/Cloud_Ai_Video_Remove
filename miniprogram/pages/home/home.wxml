@@ -27,7 +27,6 @@
             <!-- 视频预览区域 -->
             <view class="video-preview-container">
                 <video class="video-preview" src="{{resultVideoUrl}}" poster="{{resultVideoPoster}}" show-center-play-btn="{{true}}" controls="{{true}}" object-fit="cover"></video>
-                <!-- <view class="video-duration">{{resultVideoDuration || '00:21'}}</view> -->
             </view>
             <!-- 操作按钮区域 -->
             <view class="action-buttons">
@@ -35,7 +34,7 @@
                     <t-button theme="primary" variant="outline" block icon="link" bindtap="copyNoWatermarkLink">
                         复制无水印链接
                     </t-button>
-                    <t-button theme="primary" block icon="download" bindtap="saveToPhone">
+                    <t-button theme="primary" block icon="download" bindtap="saveVideoToPhone">
                         保存到手机
                     </t-button>
                 </view>
@@ -43,11 +42,8 @@
                     <t-button theme="danger" variant="outline" block icon="link" bindtap="copyWithCover">
                         复制封面链接
                     </t-button>
-                    <t-button theme="success" block icon="photo" bindtap="saveCover">保存封面</t-button>
+                    <t-button theme="success" block icon="photo" bindtap="saveCoverToPhone">保存封面</t-button>
                 </view>
-                <!-- <t-button theme="warning" block icon="download" bindtap="useAlternativeDownload">
-                    下载通道二（保存失败时使用）
-                </t-button> -->
                 <t-button theme="default" block icon="edit" bindtap="copyVideoTitle">
                     复制视频标题文案
                 </t-button>
@@ -71,7 +67,7 @@
                             <t-button size="small" theme="primary" variant="outline" bindtap="copyPicLink" data-url="{{item}}">
                                 复制链接
                             </t-button>
-                            <t-button size="small" theme="primary" bindtap="downloadPic" data-url="{{item}}">
+                            <t-button size="small" theme="primary" bindtap="downloadImageViaCloudFunction" data-url="{{item}}">
                                 下载图片
                             </t-button>
                         </view>
@@ -101,6 +97,4 @@
     </view>
     <t-toast id="t-toast" />
     <t-message id="t-message" />
-    <!-- 登录弹窗 -->
-    <t-dialog visible="{{showLoginDialog}}" title="登录提示" content="登录后即可使用视频解析功能，新用户首次登录赠送10次解析机会！" confirm-btn="{{ { content: '立即登录', variant: 'base' } }}" cancel-btn="{{ { content: '取消', variant: 'outline' } }}" bind:confirm="handleLogin" bind:cancel="closeLoginDialog" />
 </view>
